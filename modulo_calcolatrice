@@ -1,0 +1,59 @@
+import promptSync from "prompt-sync"
+const prompt = promptSync()
+
+function add(n1, n2) {
+    return n1 + n2
+}
+
+function sub(n1, n2) {
+    return n1 - n2
+}
+
+function molt(n1, n2) {
+    return n1 * n2
+}
+
+function div(n1, n2) {
+    if (n2 === 0) {
+        console.log("Errore: divisione per zero")
+        return null
+    }
+    return n1 / n2
+}
+
+function main() {
+    let n1 = parseFloat(prompt("Inserisci il primo valore: "))
+    let n2 = parseFloat(prompt("Inserisci il secondo valore: "))
+
+    while (true) {
+        console.log("\n1) somma")
+        console.log("2) sottrazione")
+        console.log("3) moltiplicazione")
+        console.log("4) divisione")
+        let scelta = prompt("0) esci\n")
+
+        switch (scelta) {
+            case "1":
+                console.log(`${n1} + ${n2} = ${add(n1, n2)}`)
+                break
+            case "2":
+                console.log(`${n1} - ${n2} = ${sub(n1, n2)}`)
+                break
+            case "3":
+                console.log(`${n1} * ${n2} = ${molt(n1, n2)}`)
+                break
+            case "4":
+                const risultato = div(n1, n2)
+                if (risultato !== null)
+                    console.log(`${n1} / ${n2} = ${risultato}`)
+                break
+            case "0":
+                console.log("Arrivederci!")
+                return
+            default:
+                console.log("Scelta non valida")
+        }
+    }
+}
+
+main()
